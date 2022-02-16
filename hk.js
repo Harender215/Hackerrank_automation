@@ -42,6 +42,8 @@ browserOpen.then(function(browserObj){
     return allChallengesPromise;
 }).then(function(questionArr){
     console.log('number of question', questionArr.length)
+    let questionWillBeSolved = questionSolver(questionArr[0])
+    return questionWillBeSolved
 })
 
 
@@ -63,3 +65,11 @@ function waitAndClick(selector, cPage){
         
     })
 }
+
+function questionSolver(question){
+    return new Promise(function(resolve, reject){
+        let questionWillBeClicked = question.click()
+        return questionWillBeClicked
+    })
+}
+
