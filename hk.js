@@ -36,7 +36,14 @@ browserOpen.then(function(browserObj){
     return getToWarmUp
 }).then(function(){
     let waitFor3Seconds = page.waitFor(3000)
+    return waitFor3Seconds
+}).then(function(){
+    let allChallengesPromise = page.$$(".ui-btn.ui-btn-normal.primary-cta.ui-btn-line-primary.ui-btn-styled",{delay: 50})
+    return allChallengesPromise;
+}).then(function(questionArr){
+    console.log('number of question', questionArr.length)
 })
+
 
 
 
