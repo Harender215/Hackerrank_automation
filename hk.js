@@ -89,7 +89,27 @@ function questionSolver(page, question, answer){
         }).then(function(){
             let XisPressed = page.keyboard.press('X', {delay: 100})
             return XisPressed
+        }).then(function(){
+            let CtrlisUnPressed = page.keyboard.up('Control')
+            return CtrlisUnPressed
+        }).then(function(){
+            let mainEditorInFocus = waitAndClick('.monaco-editor.no-user-select.vs',page)
+            return mainEditorInFocus
+        }).then(function(){
+            let ctrlIsPressed = page.keyboard.down('Control')
+            return ctrlIsPressed 
+        }).then(function(){
+            let AisPressed = page.keyboard.press('A', {delay:100})
+            return AisPressed
+        }).then(function(){
+            let VisPressed = page.keyboard.press('V', {delay:100})
+            return VisPressed
+        }).then(function(){
+            let CtrlisUnPressed = page.keyboard.up('Control')
+            return CtrlisUnPressed;
         })
+        
+        
 
     })
 }
