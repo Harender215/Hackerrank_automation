@@ -1,5 +1,7 @@
 const puppeteer = require('puppeteer')
 
+const codeObj = require('./codes')
+
 const loginLink = 'https://www.hackerrank.com/auth/login'
 const email = 'ytg38021@qopow.com'
 const password ='Raju@123'
@@ -42,7 +44,7 @@ browserOpen.then(function(browserObj){
     return allChallengesPromise;
 }).then(function(questionArr){
     console.log('number of question', questionArr.length)
-    let questionWillBeSolved = questionSolver(questionArr[0])
+    let questionWillBeSolved = questionSolver(page, questionArr[0], codeObj.answers[0])
     return questionWillBeSolved
 })
 
@@ -66,7 +68,7 @@ function waitAndClick(selector, cPage){
     })
 }
 
-function questionSolver(question){
+function questionSolver(page, question, answer){
     return new Promise(function(resolve, reject){
         let questionWillBeClicked = question.click()
         return questionWillBeClicked.then(function(){
@@ -76,6 +78,8 @@ function questionSolver(question){
             return waitAndClick('.checkbox-input', page)
         }).then(function(){
             return page.waitForSelector('.custom-input.theme-old.size-medium',page)
+        }).then(function(){
+            return page.type('.custom-input.theme-old.size-medium', answer, {delay:10})
         })
 
     })
