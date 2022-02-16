@@ -69,7 +69,10 @@ function waitAndClick(selector, cPage){
 function questionSolver(question){
     return new Promise(function(resolve, reject){
         let questionWillBeClicked = question.click()
-        return questionWillBeClicked
+        return questionWillBeClicked.then(function(){
+            let EditorInFocusPromise = waitAndClick(".monaco-editor.no-user-select.vs", page)
+            return EditorInFocusPromise
+        })
     })
 }
 
