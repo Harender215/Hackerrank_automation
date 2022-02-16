@@ -107,9 +107,14 @@ function questionSolver(page, question, answer){
         }).then(function(){
             let CtrlisUnPressed = page.keyboard.up('Control')
             return CtrlisUnPressed;
+        }).then(function(){
+            let RunCode_ButtonPressed = page.click(".hr-monaco__run-code", {delay: 100})
+            return RunCode_ButtonPressed;
+        }).then(function(){
+            resolve()
+        }).catch(function(err){
+            reject();
         })
-        
-        
 
     })
 }
