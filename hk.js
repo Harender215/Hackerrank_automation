@@ -80,6 +80,15 @@ function questionSolver(page, question, answer){
             return page.waitForSelector('.custom-input.theme-old.size-medium',page)
         }).then(function(){
             return page.type('.custom-input.theme-old.size-medium', answer, {delay:10})
+        }).then(function(){
+            let CtrlIsPressed = page.keyboard.down('Control')
+            return CtrlIsPressed
+        }).then(function(){
+            let AisPressed = page.keyboard.press('A', {delay:100})
+            return AisPressed
+        }).then(function(){
+            let XisPressed = page.keyboard.press('X', {delay: 100})
+            return XisPressed
         })
 
     })
