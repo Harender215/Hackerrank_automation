@@ -72,7 +72,12 @@ function questionSolver(question){
         return questionWillBeClicked.then(function(){
             let EditorInFocusPromise = waitAndClick(".monaco-editor.no-user-select.vs", page)
             return EditorInFocusPromise
+        }).then(function(){
+            return waitAndClick('.checkbox-input', page)
+        }).then(function(){
+            return page.waitForSelector('.custom-input.theme-old.size-medium',page)
         })
+
     })
 }
 
