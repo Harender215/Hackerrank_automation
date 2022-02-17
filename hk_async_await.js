@@ -20,7 +20,7 @@ const password ='Raju@123';
         await newTab.type("#input-1", email, {delay: 10})
         await newTab.type("#input-2", password, {delay : 10})
         await newTab.click('button[data-analytics="LoginPassword"]', {delay: 50})
-
+        await waitAndClick('.topic-card a[data-attr1="algorithms"]', newTab)
 
     }catch(error){
         console.log(error)
@@ -28,3 +28,8 @@ const password ='Raju@123';
 })()
 
 
+async function waitAndClick(selector, cPage){
+    await cPage.waitForSelector(selector)
+    let selectorClicked = cPage.click(selector)
+    return selectorClicked
+}
