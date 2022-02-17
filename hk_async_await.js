@@ -21,6 +21,11 @@ const password ='Raju@123';
         await newTab.type("#input-2", password, {delay : 10})
         await newTab.click('button[data-analytics="LoginPassword"]', {delay: 50})
         await waitAndClick('.topic-card a[data-attr1="algorithms"]', newTab)
+        await waitAndClick('input[value="warmup"]' , newTab)
+        let allChalanges = await newTab.$$(".ui-btn.ui-btn-normal.primary-cta.ui-btn-line-primary.ui-btn-styled",{delay: 50})
+        console.log('Total question' , allChalanges.length)
+
+
 
     }catch(error){
         console.log(error)
